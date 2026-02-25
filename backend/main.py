@@ -1,12 +1,12 @@
-from fastapi import FastAPI, WebSocket
-from fastapi.middleware.cors import CORSMiddleware
-import uvicorn
 import asyncio
-import json
 from datetime import datetime, timezone
 
-from backend.providers import router as providers_router
+import uvicorn
+from fastapi import FastAPI, WebSocket
+from fastapi.middleware.cors import CORSMiddleware
+
 from backend.channels import router as channels_router
+from backend.providers import router as providers_router
 from backend.templates import router as templates_router
 
 app = FastAPI(title="Nanobot API", version="0.1.0")
