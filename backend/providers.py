@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import Optional
 
@@ -34,4 +34,4 @@ async def delete_provider(provider_id: str):
     if provider_id in providers_db:
         del providers_db[provider_id]
         return {"status": "deleted"}
-    return {"status": "not_found"}, 404
+    raise HTTPException(status_code=404, detail={"status": "not_found"})
