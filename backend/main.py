@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
+from backend.providers import router as providers_router
+
 app = FastAPI(title="Nanobot API", version="0.1.0")
 
 app.add_middleware(
@@ -11,6 +13,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(providers_router)
 
 
 @app.get("/")
